@@ -14657,6 +14657,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <vertex x="0.4186" y="-1.0105"/>
 </polygon>
 </package>
+<package name="FIDUCIAL-1X2">
+<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
+</package>
+<package name="MICRO-FIDUCIAL">
+<smd name="1" x="0" y="0" dx="0.635" dy="0.635" layer="1" roundness="100" cream="no"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LETTER_L">
@@ -19330,6 +19336,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <vertex x="0.6834" y="-1.65"/>
 </polygon>
 </symbol>
+<symbol name="FIDUCIAL">
+<wire x1="-0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
+<wire x1="0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.254" layer="94"/>
+<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="FRAME-LETTER" prefix="FRAME">
@@ -19451,6 +19462,25 @@ logo. Default layer for the logo on the board is tSilk.</description>
 </technologies>
 </device>
 <device name="L" package="OSHW-LOGO-L">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="FIDUCIAL" prefix="FID">
+<description>&lt;b&gt;Fiducial Alignment Points&lt;/b&gt;
+Various fiducial points for machine vision alignment.</description>
+<gates>
+<gate name="G$1" symbol="FIDUCIAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="1X2" package="FIDUCIAL-1X2">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="UFIDUCIAL" package="MICRO-FIDUCIAL">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -22138,6 +22168,8 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <part name="GND30" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND32" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+8" library="SparkFun" deviceset="3.3V" device="" value="VCC"/>
+<part name="FID1" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
+<part name="FID2" library="SparkFun-Aesthetics" deviceset="FIDUCIAL" device="1X2"/>
 </parts>
 <sheets>
 <sheet>
@@ -22148,10 +22180,10 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <wire x1="223.52" y1="140.208" x2="223.52" y2="175.26" width="0.2032" layer="97" style="shortdash"/>
 <text x="241.3" y="141.478" size="1.778" layer="97" rot="R90">Optional Pullups for I2C lines</text>
 <text x="167.64" y="10.16" size="2.54" layer="94">Casey Kuhns</text>
-<text x="238.76" y="7.62" size="2.54" layer="94">v01</text>
+<text x="238.76" y="7.62" size="2.54" layer="94">v10</text>
 </plain>
 <instances>
-<instance part="R2" gate="G$1" x="139.7" y="165.1" rot="R90"/>
+<instance part="R2" gate="G$1" x="142.24" y="165.1" rot="R90"/>
 <instance part="GND3" gate="1" x="139.7" y="139.7"/>
 <instance part="C3" gate="G$1" x="152.4" y="106.68" smashed="yes" rot="R180">
 <attribute name="NAME" x="153.416" y="106.807" size="1.778" layer="95"/>
@@ -22169,7 +22201,7 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <attribute name="VALUE" x="219.583" y="78.994" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND8" gate="1" x="215.9" y="71.12"/>
-<instance part="P+11" gate="G$1" x="139.7" y="172.72"/>
+<instance part="P+11" gate="G$1" x="142.24" y="172.72"/>
 <instance part="P+15" gate="G$1" x="152.4" y="111.76" smashed="yes">
 <attribute name="VALUE" x="148.844" y="115.316" size="1.778" layer="96"/>
 </instance>
@@ -22181,7 +22213,7 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <attribute name="NAME" x="170.434" y="160.782" size="1.778" layer="95"/>
 <attribute name="VALUE" x="170.18" y="93.98" size="1.778" layer="96"/>
 </instance>
-<instance part="P+1" gate="G$1" x="162.56" y="160.02"/>
+<instance part="P+1" gate="G$1" x="162.56" y="172.72"/>
 <instance part="GND5" gate="1" x="162.56" y="96.52"/>
 <instance part="JP1" gate="G$1" x="17.78" y="165.1"/>
 <instance part="C2" gate="G$1" x="129.54" y="157.48" smashed="yes" rot="R270">
@@ -22273,6 +22305,8 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <instance part="GND30" gate="1" x="71.12" y="86.36"/>
 <instance part="GND32" gate="1" x="63.5" y="86.36"/>
 <instance part="P+8" gate="G$1" x="114.3" y="104.14"/>
+<instance part="FID1" gate="G$1" x="246.38" y="25.4"/>
+<instance part="FID2" gate="G$1" x="241.3" y="25.4"/>
 </instances>
 <busses>
 </busses>
@@ -22481,16 +22515,18 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 <label x="81.28" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="165.1" y1="157.48" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="160.02" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="154.94" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="157.48" x2="134.62" y2="157.48" width="0.1524" layer="91"/>
-<junction x="139.7" y="157.48"/>
+<wire x1="165.1" y1="157.48" x2="142.24" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="160.02" x2="142.24" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="157.48" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
+<junction x="142.24" y="157.48"/>
 <label x="149.86" y="157.48" size="1.778" layer="95"/>
 <pinref part="U1" gate="G$1" pin="PC6(/RESET)"/>
 <pinref part="R2" gate="G$1" pin="1"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <pinref part="S1" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="157.48" x2="134.62" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="154.94" x2="139.7" y2="157.48" width="0.1524" layer="91"/>
+<junction x="139.7" y="157.48"/>
 </segment>
 </net>
 <net name="SCK" class="0">
@@ -22559,7 +22595,7 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 </net>
 <net name="VCC" class="0">
 <segment>
-<wire x1="139.7" y1="172.72" x2="139.7" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="172.72" x2="142.24" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="P+11" gate="G$1" pin="3.3V"/>
 </segment>
@@ -22575,7 +22611,7 @@ Resettable Fuse. Spark Fun Electronics SKU : COM-08357</description>
 </segment>
 <segment>
 <wire x1="165.1" y1="152.4" x2="162.56" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="152.4" x2="162.56" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="152.4" x2="162.56" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="149.86" x2="162.56" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="149.86" x2="162.56" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="147.32" x2="162.56" y2="147.32" width="0.1524" layer="91"/>
